@@ -30,9 +30,17 @@ export const thunk_get_authorization_token = () => {
 
     return function(dispatch, getState){
 
-        return fetch(`
-            https://accounts.spotify.com/authorize?response_type=token&client_id=2fdaa87358fd434f84c5c3c481ba2ca6&redirect_uri=https://sp-funify.herokuapp.com/home
-            `)
+        const client_id = '2fdaa87358fd434f84c5c3c481ba2ca6';
+        const scope = 'user-read-private user-read-email';
+        const redirect_uri = 'https://sp-funify.herokuapp.com/home';
+
+        let url = 'https://accounts.spotify.com/authorize';
+        url += '?response_type=token';
+        url += '&client_id=' + encodeURIComponent(client_id);
+        url += '&scope=' + encodeURIComponent(scope);
+        url += '&redirect_uri=' + encodeURIComponent(redirect_uri);
+
+        return fetch(url)
             .then(data => data.json())
             .then(data => {
                 console.log(data);
