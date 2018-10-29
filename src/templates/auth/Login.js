@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
 import { connect } from "react-redux";
-import LoginForm from "../../components/auth/LoginForm";
+import SpotifyLogin from '../../components/auth/Spotify';
 import Logo from "../../components/logo/Logo";
 import { withStyles } from "@material-ui/core/styles";
 
@@ -33,7 +33,7 @@ class Login extends React.Component {
         className={classes.root}
       >
         <Logo />
-        <LoginForm onSubmit={this.submit} buttonTitle={"Login"} />
+        <SpotifyLogin />
       </Grid>
     );
   }

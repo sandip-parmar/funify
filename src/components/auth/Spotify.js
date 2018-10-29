@@ -1,32 +1,27 @@
 import React from "react";
 import { Button } from "@material-ui/core";
-import { clientId } from '../../env';
 import { connect } from 'react-redux';
-import { thunk_get_authorization_token } from '../../redux/actions/spotify';
+import { spotify_url } from '../../env';
 
-class Spotify extends React.Component {
+class SpotifyLogin extends React.Component {
 
     constructor(props){
-        super(props);
-        this.endpoint = "https://accounts.spotify.com/authorize";
-        this.clientId = clientId;
-        this.responseType = 'code';
-        this.redirect_uri='http://localhost:3030'
-        this.show_dialog = false;
-        this.scope = 'user-read-private user-read-email'
+        super(props);        
         this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick(){
-        this.props.dispatch(thunk_get_authorization_token());        
+    handleClick(){        
+        window.location = spotify_url;
     }
 
     render() {
         return (
-        <Button
-            onClick={this.handleClick}>
-            Spotify
-        </Button>
+        <div>
+            <Button
+                onClick={this.handleClick}>
+                Login with Spotify
+            </Button>
+        </div>        
         );
     }
 }
@@ -36,4 +31,4 @@ const mapStateToProps = state => {
         data: state
     }
 }
-export default connect(mapStateToProps)(Spotify);
+export default connect(mapStateToProps)(SpotifyLogin);

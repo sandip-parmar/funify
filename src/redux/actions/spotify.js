@@ -1,5 +1,3 @@
-import myStore from '../store';
-
 export const GET_AUTHORIZATION_TOKEN = 'GET_AUTHORIZATION_TOKEN';
 export const RECEIVE_AUTHORIZATION_TOKEN = 'RECEIVE_AUTHORIZATION_TOKEN';
 export const RECEIVE_AUTHORIZATION_ERROR = 'RECEIVE_AUTHORIZATION_ERROR';
@@ -25,9 +23,6 @@ export const receive_authorization_error = () => {
 
 export const thunk_get_authorization_token = () => {
 
-    // initiate api req
-    //myStore.dispatch(get_authorization_token());
-
     return function(dispatch, getState){
 
         const client_id = '2fdaa87358fd434f84c5c3c481ba2ca6';
@@ -45,6 +40,6 @@ export const thunk_get_authorization_token = () => {
             .then(data => {
                 console.log(data);
             })
-            .catch(err => dispatch(receive_authorization_error()))
+            .catch(err => dispatch(receive_authorization_error()));
     }
 }
