@@ -1,3 +1,9 @@
 export const initialState = {
-  isAuthenticated: false
+  isFetching: false,
+  data: {},
+  auth:{
+    isAuthenticated: false,
+    authToken: '',
+    accessToken: ''
+  }
 };

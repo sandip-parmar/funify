@@ -3,6 +3,7 @@ import { Grid, Button, TextField } from "@material-ui/core";
 import { Field, reduxForm } from "redux-form";
 import { withStyles } from "@material-ui/core/styles";
 import SocialLogin from "./SocialLogin";
+import Spotify from './Spotify';
 
 const renderTextField = ({
   input,
@@ -76,6 +77,9 @@ class LoginForm extends React.Component {
 
               <Grid item>
                 <SocialLogin title={"Login"} />
+              </Grid>
+              <Grid item>
+                <Spotify />
               </Grid>
             </Grid>
           </form>

@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { MuiThemeProvider } from "@material-ui/core";
 import myStore from "./redux/store";
-import thunk from "redux-thunk";
+import thunk from 'redux-thunk';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
