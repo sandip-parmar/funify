@@ -4,9 +4,10 @@ import Item from "../list-item/Item";
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
-    root: {
-        width: '100%',
-        height: '88vh',
+    root: {        
+        'height': '100%',
+        'overflow-y': 'auto',
+        'overflow-x': 'hidden'
     },
     sidebar: {
         'background-color': "#FFF",
@@ -21,10 +22,6 @@ const styles = {
 
 class Sidebar extends React.Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const { classes } = this.props;
         return (
@@ -33,7 +30,9 @@ class Sidebar extends React.Component {
                 spacing={8}
                 direction={"column"}
                 justify={"flex-start"}
-            >
+                alignItems={'stretch'}
+                className={classes.root}
+            >                
                 <Grid item>
                     <Grid
                         container
@@ -42,12 +41,12 @@ class Sidebar extends React.Component {
                         justify={"center"}
                         alignItems={'center'}
                         className={classes.mt1}>
-                            <Grid item><Icon>monochrome_photos</Icon></Grid>
+                            <Grid item>
+                                <Icon>monochrome_photos</Icon>
+                            </Grid>
                             <Grid item><Typography variant={'display1'}>Instagram</Typography></Grid>
                     </Grid>
-                </Grid>
-                <Grid item>
-                    <List className={classes.root}>
+                    <List>
                         <Item icon="home" title="Home" />
                         <Item icon="switch_video" title="Live" />
                         <Item icon="message" title="Message" />

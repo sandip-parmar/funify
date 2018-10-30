@@ -8,21 +8,27 @@ const styles = {
         height: '2.5em',
         'border-radius': '50%',
         'background-color': 'green'
-    },    
+    }, 
+    card:{
+        height: '15rem',
+        'background-color': "#FFF",
+        '-webkit-box-shadow': '0px 0px 50px 0px rgba(0,0,0,0.15)',
+        width: 'auto'
+    },   
     _card: {
-        height: '100%'
+        height: '100%',
+    },
+    p05: {
+        padding: '0.5em'
     }
 }
 
 class Card extends React.Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const { classes } = this.props;
         return (
+            <div className={classes.card}>
                 <Grid
                     container
                     direction={"column"}
@@ -30,7 +36,7 @@ class Card extends React.Component {
                     justify={'space-between'}
                     className={classes._card}
                 >
-                    <Grid item>
+                    <Grid item className={classes.p05}>
                         <Grid
                             container
                             direction={"row"}
@@ -63,7 +69,7 @@ class Card extends React.Component {
                             <img />
                         </div>
                     </Grid>
-                    <Grid item>
+                    <Grid item className={classes.p05}>
                         <Grid
                             container
                             direction={"row"}
@@ -89,6 +95,7 @@ class Card extends React.Component {
                         </Grid>
                     </Grid>
                 </Grid>
+                </div>
         );
     }
 }

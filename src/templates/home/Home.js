@@ -5,32 +5,33 @@ import {
 } from "@material-ui/core";
 import posed from "react-pose";
 import styled from "styled-components";
-import Card from '../../components/card/Card';
+import PostsGrid from '../../components/posts-grid/PostsGrid';
 import { withStyles } from '@material-ui/core/styles';
 import Sidebar from "../../components/sidebar/Sidebar";
 import Header from "../../components/header/Header";
 
 
 const styles = {
+  root: {
+    height: '100vh'
+  },
   sidebar: {
     'background-color': "#FFF",
     '-webkit-box-shadow': '0px 0px 50px 0px rgba(0,0,0,0.15)',
-    'z-index': 100
+    'z-index': 100,
+    'height': '100%'
   },
   header: {
     padding: '0.5em 1em',
     '-webkit-box-shadow': '0px 0px 50px 0px rgba(0,0,0,0.15)'
   },
-  _card_container: {
-    height: '15rem',
-    'background-color': "#FFF",
-    '-webkit-box-shadow': '0px 0px 50px 0px rgba(0,0,0,0.15)',
-},
   removeFlexWrap: {
     'flex-wrap': 'nowrap !important'
   },
   body: {
-    padding: '2em'
+    padding: '2em',
+    height: '100vh',
+    'overflow-y': 'auto'
   }
 }
 
@@ -48,12 +49,13 @@ class Home extends React.Component {
         container
         direction={"row"}
         alignItems={"flex-start"}
-        justify={"flex-start"}
+        justify={"stretch"}
+        className={classes.root}
       >
         <Hidden smDown>
-        <Grid item md={3} lg={2} className={classes.sidebar}>
-          <Sidebar />
-        </Grid>
+          <Grid item md={3} lg={2} className={classes.sidebar}>
+            <Sidebar />
+          </Grid>
         </Hidden>
         <Grid item xs={12} sm={12} md={9} lg={10}>
           <Grid
@@ -67,38 +69,7 @@ class Home extends React.Component {
               <Header />
             </Grid>
             <Grid item className={classes.body}>
-              <Grid
-                container
-                spacing={16}
-                direction={"row"}              
-                alignItems={"flex-start"}
-                justify={"center"}
-              >
-                <Grid item className={classes._card_container} xs={12} sm={6} md={3} lg={3}>
-                  <Card />
-                </Grid>
-                <Grid item className={classes._card_container} xs={12} sm={6} md={3} lg={3}>
-                  <Card />
-                </Grid>
-                <Grid item className={classes._card_container} xs={12} sm={6} md={3} lg={3}>
-                  <Card />
-                </Grid>
-                <Grid item className={classes._card_container} xs={12} sm={6} md={3} lg={3}>
-                  <Card />
-                </Grid>
-                <Grid item className={classes._card_container} xs={12} sm={6} md={3} lg={3}>
-                  <Card />
-                </Grid>
-                <Grid item className={classes._card_container} xs={12} sm={6} md={3} lg={3}>
-                  <Card />
-                </Grid>
-                <Grid item className={classes._card_container} xs={12} sm={6} md={3} lg={3}>
-                  <Card />
-                </Grid>
-                <Grid item className={classes._card_container} xs={12} sm={6} md={3} lg={3}>
-                  <Card />
-                </Grid>
-              </Grid>
+              <PostsGrid />
             </Grid>
           </Grid>
         </Grid>
