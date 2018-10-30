@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Hidden } from "@material-ui/core";
+import { Grid, Hidden, Typography } from "@material-ui/core";
 import posed from "react-pose";
 import styled from "styled-components";
 import { withStyles } from '@material-ui/core/styles';
@@ -37,7 +37,6 @@ const styles = {
 class Home extends React.Component {
   constructor(props){
     super(props);
-    console.log(props)
     localStorage.setItem('access_token', props.location.hash.slice(props.location.hash.indexOf("=")+1,props.location.hash.indexOf("&")))
   }
 
@@ -55,7 +54,41 @@ class Home extends React.Component {
       >
         <Hidden xsDown>
           <Grid item sm={1}>
-            <Drawer>Hello</Drawer>
+            <Drawer>
+              <Grid
+                  container
+                  direction={"column"}
+                  align-items={"flex-start"}
+                  justify={"flex-start"}
+                >
+                  <Grid item>
+                      <Grid
+                      container
+                      direction={"column"}
+                      align-items={"center"}
+                      justify={"center"}
+                    > 
+                      <Grid item>
+                        <div></div>
+                      </Grid>
+                      <Grid item>
+                        Sandip Parmar
+                      </Grid>
+                      <Hidden xsDown>
+                      <Grid item>
+                        <Typography variant={'body'}>Music is the sound of thinking</Typography>
+                      </Grid>
+                      </Hidden>
+                    </Grid>
+                  </Grid>
+                  <Grid item>
+
+                  </Grid>
+                  <Grid item>
+                  
+                  </Grid>
+              </Grid>
+            </Drawer>
           </Grid>
         </Hidden>
 
