@@ -1,74 +1,108 @@
 import React from "react";
-import { Grid, Hidden } from "@material-ui/core";
+import {
+  Grid, Hidden, List, ListItem, Divider, Button, Icon,
+  Typography, FormControl, InputLabel, Input, InputAdornment, IconButton
+} from "@material-ui/core";
 import posed from "react-pose";
 import styled from "styled-components";
+import Card from '../../components/card/Card';
 import { withStyles } from '@material-ui/core/styles';
+import Sidebar from "../../components/sidebar/Sidebar";
+import Header from "../../components/header/Header";
 
-
-const Box = posed.div({
-  hoverable: true,
-  init: {
-    position: "inherit",
-    width: "inherit",
-    "background-color": "#727272",
-    padding: "1em"
-  },
-  hover: {
-    position: "fixed",
-    left: 0,
-    top: 0,
-    width: "250px",
-    "background-color": "#727272",
-    "z-index": 20,
-    padding: "1em"
-  }
-});
-
-const Drawer = styled(Box)`
-  height: 100vh;
-`;
 
 const styles = {
-  __container: {
-    'background-color': '#FBFCFD'
+  sidebar: {
+    'background-color': "#FFF",
+    '-webkit-box-shadow': '0px 0px 50px 0px rgba(0,0,0,0.15)',
+    'z-index': 100
+  },
+  header: {
+    padding: '0.5em 1em',
+    '-webkit-box-shadow': '0px 0px 50px 0px rgba(0,0,0,0.15)'
+  },
+  _card_container: {
+    height: '15rem',
+    'background-color': "#FFF",
+    '-webkit-box-shadow': '0px 0px 50px 0px rgba(0,0,0,0.15)',
+},
+  removeFlexWrap: {
+    'flex-wrap': 'nowrap !important'
+  },
+  body: {
+    padding: '2em'
   }
 }
 
 class Home extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    console.log(props)
-    localStorage.setItem('access_token', props.location.hash.slice(props.location.hash.indexOf("=")+1,props.location.hash.indexOf("&")))
   }
 
   render() {
 
-    const {classes} = this.props;
+    const { classes } = this.props;
 
     return (
       <Grid
         container
         direction={"row"}
-        align-items={"flex-start"}
+        alignItems={"flex-start"}
         justify={"flex-start"}
-        className={classes.__container}
       >
-        <Hidden xsDown>
-          <Grid item sm={1}>
-            <Drawer>Hello</Drawer>
-          </Grid>
-        </Hidden>
-
-        <Grid item xs={11} sm={10}>
-          Home
+        <Hidden smDown>
+        <Grid item md={3} lg={2} className={classes.sidebar}>
+          <Sidebar />
         </Grid>
-
-        <Hidden xsDown>
-          <Grid item xs={1}>
-            Hello world
-          </Grid>
         </Hidden>
-      </Grid>
+        <Grid item xs={12} sm={12} md={9} lg={10}>
+          <Grid
+            container
+            direction={"column"}
+            alignItems={"stretch"}
+            justify={"flex-start"}
+            className={classes.removeFlexWrap}
+          >
+            <Grid item className={classes.header}>
+              <Header />
+            </Grid>
+            <Grid item className={classes.body}>
+              <Grid
+                container
+                spacing={16}
+                direction={"row"}              
+                alignItems={"flex-start"}
+                justify={"center"}
+              >
+                <Grid item className={classes._card_container} xs={12} sm={6} md={3} lg={3}>
+                  <Card />
+                </Grid>
+                <Grid item className={classes._card_container} xs={12} sm={6} md={3} lg={3}>
+                  <Card />
+                </Grid>
+                <Grid item className={classes._card_container} xs={12} sm={6} md={3} lg={3}>
+                  <Card />
+                </Grid>
+                <Grid item className={classes._card_container} xs={12} sm={6} md={3} lg={3}>
+                  <Card />
+                </Grid>
+                <Grid item className={classes._card_container} xs={12} sm={6} md={3} lg={3}>
+                  <Card />
+                </Grid>
+                <Grid item className={classes._card_container} xs={12} sm={6} md={3} lg={3}>
+                  <Card />
+                </Grid>
+                <Grid item className={classes._card_container} xs={12} sm={6} md={3} lg={3}>
+                  <Card />
+                </Grid>
+                <Grid item className={classes._card_container} xs={12} sm={6} md={3} lg={3}>
+                  <Card />
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid >
     );
   }
 }
