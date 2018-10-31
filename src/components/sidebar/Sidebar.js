@@ -44,15 +44,15 @@ class Sidebar extends React.Component {
                             <Grid item>
                                 <Icon>monochrome_photos</Icon>
                             </Grid>
-                            <Grid item><Typography variant={'display1'}>Instagram</Typography></Grid>
+                            <Grid item><Typography variant={'h4'}>Instagram</Typography></Grid>
                     </Grid>
                     <List>
-                        <Item icon="home" title="Home" />
-                        <Item icon="switch_video" title="Live" />
-                        <Item icon="message" title="Message" />
-                        <Item icon="notifications" title="Notification" />
-                        <Item icon="settings" title="Settings" />
-                        <Item icon="power_settings_new" title="Logout" />
+                        <Item icon="home" title="Home" route="/" />
+                        <Item icon="switch_video" title="Live" route="live" />
+                        <Item icon="message" title="Message" route="messages" />
+                        <Item icon="notifications" title="Notification" route="notification" />
+                        <Item icon="settings" title="Settings" route="settings" />
+                        <Item icon="power_settings_new" title="Logout" route="logout" />
                     </List>
                 </Grid>
             </Grid>

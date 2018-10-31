@@ -3,13 +3,25 @@ import {
   Grid, Hidden, List, ListItem, Divider, Button, Icon,
   Typography, FormControl, InputLabel, Input, InputAdornment, IconButton
 } from "@material-ui/core";
-import posed from "react-pose";
+import posed, { PoseGroup } from "react-pose";
 import styled from "styled-components";
+import { Switch, Route } from 'react-router'
 import PostsGrid from '../../components/posts-grid/PostsGrid';
 import { withStyles } from '@material-ui/core/styles';
 import Sidebar from "../../components/sidebar/Sidebar";
 import Header from "../../components/header/Header";
+import SocialLogin from "../../components/auth/SocialLogin";
 
+const RouteContainer = posed.div({
+  enter: {
+    opacity: 1,
+    delay: 300,
+    beforeChildren: true
+  },
+  exit: {
+    opacity: 0
+  }
+});
 
 const styles = {
   root: {
@@ -36,20 +48,14 @@ const styles = {
 }
 
 class Home extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
-
     const { classes } = this.props;
-
     return (
       <Grid
         container
         direction={"row"}
         alignItems={"flex-start"}
-        justify={"stretch"}
         className={classes.root}
       >
         <Hidden smDown>
@@ -69,7 +75,17 @@ class Home extends React.Component {
               <Header />
             </Grid>
             <Grid item className={classes.body}>
-              <PostsGrid />
+              <PoseGroup>
+                <RouteContainer key={this.props.location.key}>
+                  <Switch location={this.props.location}>
+                    <Route exact path={this.props.match.url + "/"} component={PostsGrid} />
+                    <Route exact path={"/settings"} component={SocialLogin} />
+                    <Route exact path={"/live"} render={ () => <div>live</div>} />
+                    <Route exact path={"/messages"} render={ () => <div>messages</div>} />
+                    <Route exact path={"/logout"} render={ () => <div>logout</div>} />  
+                  </Switch>
+                </RouteContainer>
+              </PoseGroup>                          
             </Grid>
           </Grid>
         </Grid>

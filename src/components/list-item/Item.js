@@ -2,6 +2,7 @@ import React from "react";
 import { Grid, Hidden, List, ListItem, Typography, Button, Icon } from "@material-ui/core";
 import posed from "react-pose";
 import styled from "styled-components";
+import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 
 // pose animations
@@ -27,6 +28,7 @@ class Item extends React.Component {
         const { classes } = this.props;
 
         return (
+            <Link to={`${this.props.route}`}>
             <ListItem>
                 <Grid
                     container
@@ -40,12 +42,13 @@ class Item extends React.Component {
                         <Icon className={classes.icon}>{this.props.icon}</Icon>
                     </Grid>
                     <Grid item>
-                        <Typography variant={"body"}>
+                        <Typography variant={"body1"}>
                             {this.props.title}
                         </Typography>
                     </Grid>
                 </Grid>
             </ListItem>            
+            </Link>
         );
     }
 }
