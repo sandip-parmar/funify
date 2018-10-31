@@ -6,7 +6,18 @@ import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 
 // pose animations
-const Box = posed.div();
+const Box = posed.div({
+    hoverable: true,
+    init: {
+        scale: 1,
+    },
+    hover: {
+        scale: 1.1,
+        border: '1 solid #000',
+        boxShadow: '0px 5px 10px rgba(0,0,0,0.2)' 
+    }
+}
+);
 
 const styles = {
     item:{
