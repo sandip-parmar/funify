@@ -54,6 +54,7 @@ class Header extends React.Component {
                     </Grid>
                         <Grid item>
                             <Hidden xsDown>
+<<<<<<< HEAD
                                 <Typography variant={'body'} className={classes.accent}>Sandip</Typography>
 =======
                                 <Typography variant={'body1'}>Sandip</Typography>
