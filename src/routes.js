@@ -13,6 +13,7 @@ export default () => {
         <Route path="/home" component={Home} />
         <Route exact path="/login" component={Login1} />
         <Route exact path="/signup" component={SignUp} />
+        <Route exact path="/logout" component={Login1} />
         <Route exact path="/settings" component={Settings} />
       </div>
     </BrowserRouter>

@@ -32,9 +32,6 @@ const styles = {
     },
     mt1: {
         'margin-top': '1em'
-    },
-    accent: {
-        color: '#ED4E6B'
     }
 }
 
@@ -62,7 +59,7 @@ class Sidebar extends React.Component {
                         alignItems={'center'}
                         className={classes.mt1}>
                             <Grid item>
-                                <Icon className={classes.accent}>monochrome_photos</Icon>
+                                <Icon color={'primary'}>monochrome_photos</Icon>
                             </Grid>
                             <Grid item><Typography variant={'h4'}>Instagram</Typography></Grid>
                     </Grid>

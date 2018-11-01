@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import SpotifyLogin from '../../components/auth/Spotify';
 import Logo from "../../components/logo/Logo";
 import { withStyles } from "@material-ui/core/styles";
+import LoginForm from "../../components/auth/LoginForm";
 
 const styles = themes => ({
   root: {
@@ -33,7 +34,7 @@ class Login extends React.Component {
         className={classes.root}
       >
         <Logo />
-        <SpotifyLogin />
+        <LoginForm />
       </Grid>
     );
   }

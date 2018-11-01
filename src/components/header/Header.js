@@ -1,7 +1,17 @@
 import React from "react";
-import { Grid, Icon, Typography, Hidden } from "@material-ui/core";
+import { Grid, Icon, Typography, Hidden, IconButton } from "@material-ui/core";
 import { withStyles } from '@material-ui/core/styles';
+import posed from 'react-pose';
 
+const Input = posed.input({
+  focusable: true,
+  init: {
+    scale: 1
+  },
+  focus: {
+    scale: 1.2
+  }
+})
 const styles = {
     search:{
         'background-color': '#F5F5F5',
@@ -11,12 +21,11 @@ const styles = {
         'outline': 'none !important',
         'color': 'rgba(0,0,0,0.86)'
       },
-      accent: {
-        color: '#ED4E6B',
-      },
       logo: {
-        'font-size': '2em',
-        color: '#ED4E6B',
+        'font-size': '1.5em',
+      },
+      'logoMd': {
+        'font-size': '2.5em'
       }
   }
 
@@ -36,10 +45,17 @@ class Header extends React.Component {
                 justify={"space-between"}
               >
                 <Grid item>
-                  <Icon className={classes.logo}>photo_camera</Icon>
+                  <Hidden mdUp>
+                    <IconButton color={'primary'} onClick={this.props.toggleDrawer}>
+                      <Icon className={classes.logo}>photo_camera</Icon>
+                    </IconButton>
+                  </Hidden>
+                  <Hidden smDown>
+                    <Icon className={classes.logoMd} color={'primary'}>photo_camera</Icon>
+                  </Hidden>
                 </Grid>
                 <Grid item>
-                  <input className={classes.search} type="text" placeholder={'Search'}></input>
+                  <Input className={classes.search} type="text" placeholder={'Search'} />
                 </Grid>
                 <Grid item>
                   <Grid
@@ -54,7 +70,7 @@ class Header extends React.Component {
                     </Grid>
                         <Grid item>
                             <Hidden xsDown>
-                                <Typography variant={'body1'}>Sandip</Typography>
+                                <Typography variant={'body1'} color={'primary'}>Sandip</Typography>
                                 <Typography variant={'caption'}>Software</Typography>
                             </Hidden>
                         </Grid>

@@ -21,9 +21,6 @@ const styles = {
   p05: {
     padding: "0.5em"
   },
-  accent: {
-    color: "#ED4E6B"
-  },
   icon: {
       color: '#9A9999'
   }
@@ -67,7 +64,7 @@ class Card extends React.Component {
                 </Grid>
               </Grid>
               <Grid item>
-                <Icon className={classes.accent}>more_vert</Icon>
+                <Icon color={'primary'}>more_vert</Icon>
               </Grid>
             </Grid>
           </Grid>
