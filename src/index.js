@@ -20,7 +20,7 @@ const theme = createMuiTheme({
 ReactDOM.render(
     <Provider store={store}>
         <MuiThemeProvider theme={theme}>
-            <AppRoutes />
+            <AppRoutes key="routes"/>
         </MuiThemeProvider>
     </Provider>    
     , document.getElementById('root'));
