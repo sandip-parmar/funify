@@ -10,6 +10,13 @@ const styles = {
         'padding': '0.5em 2em',
         'outline': 'none !important',
         'color': 'rgba(0,0,0,0.86)'
+      },
+      accent: {
+        color: '#ED4E6B',
+      },
+      logo: {
+        'font-size': '2em',
+        color: '#ED4E6B',
       }
   }
 
@@ -29,7 +36,7 @@ class Header extends React.Component {
                 justify={"space-between"}
               >
                 <Grid item>
-                  <Icon>photo_camera</Icon>
+                  <Icon className={classes.logo}>photo_camera</Icon>
                 </Grid>
                 <Grid item>
                   <input className={classes.search} type="text" placeholder={'Search'}></input>
@@ -47,7 +54,7 @@ class Header extends React.Component {
                     </Grid>
                         <Grid item>
                             <Hidden xsDown>
-                                <Typography variant={'body'}>Sandip</Typography>
+                                <Typography variant={'body'} className={classes.accent}>Sandip</Typography>
                                 <Typography variant={'caption'}>Software</Typography>
                             </Hidden>
                         </Grid>

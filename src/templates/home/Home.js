@@ -18,7 +18,7 @@ const styles = {
   sidebar: {
     'background-color': "#FFF",
     '-webkit-box-shadow': '0px 0px 50px 0px rgba(0,0,0,0.15)',
-    'z-index': 100,
+    'z-index': '100',
     'height': '100%'
   },
   header: {

@@ -11,9 +11,12 @@ const styles = {
     item:{
 
     },
+    title: {
+        color: '#9A9999'
+    },
     icon:{
         'font-size': '2em',
-        'color':'#727272'
+        'color':'#9A9999',        
     }
 }
 
@@ -40,7 +43,7 @@ class Item extends React.Component {
                         <Icon className={classes.icon}>{this.props.icon}</Icon>
                     </Grid>
                     <Grid item>
-                        <Typography variant={"body"}>
+                        <Typography variant={"body"} className={classes.title}>
                             {this.props.title}
                         </Typography>
                     </Grid>
