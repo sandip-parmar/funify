@@ -2,6 +2,22 @@ import React from "react";
 import { Grid, Icon, Typography, List } from "@material-ui/core";
 import Item from "../list-item/Item";
 import { withStyles } from '@material-ui/core/styles';
+import pose from 'react-pose';
+
+const Box = pose.div({
+    hoverable: true,
+    init: {
+        scale: 1,
+        x: 0,
+        y: 0
+    }, 
+    hover: {
+        scale: 1,
+        x:10,
+        y:0,
+        boxShadow: '0px 5px 10px rgba(0,0,0,0.2)',
+   } 
+});
 
 const styles = {
     root: {        
@@ -46,15 +62,27 @@ class Sidebar extends React.Component {
                             <Grid item>
                                 <Icon className={classes.accent}>monochrome_photos</Icon>
                             </Grid>
-                            <Grid item><Typography variant={'display1'}>Instagram</Typography></Grid>
+                            <Grid item><Typography variant={'h4'}>Instagram</Typography></Grid>
                     </Grid>
                     <List>
-                        <Item icon="home" title="Home" />
-                        <Item icon="switch_video" title="Live" />
-                        <Item icon="message" title="Message" />
-                        <Item icon="notifications" title="Notification" />
-                        <Item icon="settings" title="Settings" />
-                        <Item icon="power_settings_new" title="Logout" />
+                        <Box className="box">
+                            <Item icon="home" title="Home" route="/" />
+                        </Box>
+                        <Box className="box">
+                            <Item icon="switch_video" title="Live" route="live" />
+                        </Box>
+                        <Box className="box">
+                            <Item icon="message" title="Message" route="messages" />
+                        </Box>
+                        <Box className="box">
+                            <Item icon="notifications" title="Notification" route="notification" />
+                        </Box>
+                        <Box className="box">
+                            <Item icon="settings" title="Settings" route="settings" />
+                        </Box>
+                        <Box className="box">
+                            <Item icon="power_settings_new" title="Logout" route="logout" />
+                        </Box>
                     </List>
                 </Grid>
             </Grid>
