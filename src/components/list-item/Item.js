@@ -23,15 +23,19 @@ const styles = {
     item:{
 
     },
+    title: {
+        color: '#9A9999'
+    },
     icon:{
         'font-size': '2em',
-        'color':'#727272'
+        'color':'#9A9999',        
     }
 }
 
 class Item extends React.Component {
     constructor(props) {
         super(props);
+        console.log(props)
     }
 
     render() {

@@ -32,12 +32,16 @@ const styles = {
     },
     mt1: {
         'margin-top': '1em'
+    },
+    accent: {
+        color: '#ED4E6B'
     }
-
 }
 
 class Sidebar extends React.Component {
-
+    constructor(props){
+        super(props);
+    }
     render() {
         const { classes } = this.props;
         return (
@@ -58,25 +62,25 @@ class Sidebar extends React.Component {
                         alignItems={'center'}
                         className={classes.mt1}>
                             <Grid item>
-                                <Icon>monochrome_photos</Icon>
+                                <Icon className={classes.accent}>monochrome_photos</Icon>
                             </Grid>
                             <Grid item><Typography variant={'h4'}>Instagram</Typography></Grid>
                     </Grid>
                     <List>
                         <Box className="box">
-                            <Item icon="home" title="Home" route="/" />
+                            <Item icon="home" title="Home" route="/home" />
                         </Box>
                         <Box className="box">
-                            <Item icon="switch_video" title="Live" route="live" />
+                            <Item icon="switch_video" title="Live" route="home/live" />
                         </Box>
                         <Box className="box">
-                            <Item icon="message" title="Message" route="messages" />
+                            <Item icon="message" title="Message" route="home/messages" />
                         </Box>
                         <Box className="box">
-                            <Item icon="notifications" title="Notification" route="notification" />
+                            <Item icon="notifications" title="Notification" route="home/notification" />
                         </Box>
                         <Box className="box">
-                            <Item icon="settings" title="Settings" route="settings" />
+                            <Item icon="settings" title="Settings" route="home/settings" />
                         </Box>
                         <Box className="box">
                             <Item icon="power_settings_new" title="Logout" route="logout" />
