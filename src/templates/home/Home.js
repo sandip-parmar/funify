@@ -10,7 +10,7 @@ import PostsGrid from '../../components/posts-grid/PostsGrid';
 import { withStyles } from '@material-ui/core/styles';
 import Sidebar from "../../components/sidebar/Sidebar";
 import Header from "../../components/header/Header";
-import SocialLogin from "../../components/auth/SocialLogin";
+import Settings from "../../templates/settings/Settings";
 
 const RouteContainer = posed.div({
   enter: {
@@ -76,13 +76,13 @@ class Home extends React.Component {
             </Grid>
             <Grid item className={classes.body}>
               <PoseGroup>
-                <RouteContainer key={this.props.location.key}>
+                <RouteContainer key={this.props.location.pathname}>
                   <Switch location={this.props.location}>
-                    <Route exact path={this.props.match.url + "/"} component={PostsGrid} />
-                    <Route exact path={"/settings"} component={SocialLogin} />
-                    <Route exact path={"/live"} render={ () => <div>live</div>} />
-                    <Route exact path={"/messages"} render={ () => <div>messages</div>} />
-                    <Route exact path={"/logout"} render={ () => <div>logout</div>} />  
+                    <Route exact path={this.props.match.url + "/"} component={PostsGrid} key="home"/>
+                    <Route path={this.props.match.url +"/settings"} component={Settings} key="settings"/>
+                    <Route exact path={this.props.match.url +"/live"} render={ () => <div>live</div>} key="live"/>
+                    <Route exact path={this.props.match.url +"/messages"} render={ () => <div>messages</div>} key="messages"/>
+                    <Route exact path={this.props.match.url +"/logout"} render={ () => <div>logout</div>} key="logout"/>  
                   </Switch>
                 </RouteContainer>
               </PoseGroup>                          

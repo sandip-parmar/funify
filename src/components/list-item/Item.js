@@ -35,6 +35,7 @@ const styles = {
 class Item extends React.Component {
     constructor(props) {
         super(props);
+        console.log(props)
     }
 
     render() {
@@ -56,11 +57,7 @@ class Item extends React.Component {
                         <Icon className={classes.icon}>{this.props.icon}</Icon>
                     </Grid>
                     <Grid item>
-<<<<<<< HEAD
-                        <Typography variant={"body"} className={classes.title}>
-=======
                         <Typography variant={"body1"}>
->>>>>>> 27a9693eb7352ee0892d1323aa18f56e011f106d
                             {this.props.title}
                         </Typography>
                     </Grid>

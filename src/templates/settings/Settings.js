@@ -14,13 +14,26 @@ import {
   InputAdornment,
   IconButton
 } from "@material-ui/core";
-import posed from "react-pose";
+import { Link, Route, Switch } from "react-router-dom";
+import posed, { PoseGroup } from "react-pose";
 import styled from "styled-components";
+import Profile from "../../components/profile/Profile";
 import { withStyles } from "@material-ui/core/styles";
+
+const RouteContainer = posed.div({
+  enter: {
+    opacity: 1,
+    delay: 200,
+    beforeChildren: true
+  },
+  exit: {
+    opacity: 0
+  }
+});
 
 const styles = {
   root: {
-    height: "100vh"
+    height: "100%"
   },
   removeFlexWrap: {
     "flex-wrap": "nowrap !important"
@@ -35,6 +48,7 @@ const styles = {
 class Settings extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props);
   }
 
   render() {
@@ -47,77 +61,40 @@ class Settings extends React.Component {
         justify={"center"}
         className={classes.root}
       >
-          <Grid item sm={4}>
-            <List>
-                <ListItem>
-                    Edit Profile
-                </ListItem>
-                <ListItem>
-                    Change Password
-                </ListItem>
-                <ListItem>
-                    Authorized Applications
-                </ListItem>
-                <ListItem>
-                    Email & SMS
-                </ListItem>
-                <ListItem>
-                    Manage Contacts
-                </ListItem>
-                <ListItem>
-                    Privacy & Security
-                </ListItem>
-            </List>
-          </Grid>
+        <Grid item sm={4}>
+          <List>
+            <Link to={`${this.props.match.url}/profile`}>
+              <ListItem>Edit Profile</ListItem>
+            </Link>
+            <Link to={`${this.props.match.url}/password`}>
+              <ListItem>Change Password</ListItem>
+            </Link>
+            <Link to={`${this.props.match.url}/auth-application`}>
+              <ListItem>Authorized Applications</ListItem>
+            </Link>
+            <Link to={`${this.props.match.url}/email`}>
+              <ListItem>Email & SMS</ListItem>
+            </Link>
+            <Link to={`${this.props.match.url}/manage-contacts`}>
+              <ListItem>Manage Contacts</ListItem>
+            </Link>
+            <Link to={`${this.props.match.url}/privacy`}>
+              <ListItem>Privacy & Security</ListItem>
+            </Link>
+          </List>
+        </Grid>
 
         <Grid item sm={8}>
-            <TextField
-            id="standard-uncontrolled"
-            label="Name"
-            defaultValue="foo"
-            className={classes.textField}
-            margin="normal"
-            />
-
-            <TextField
-            id="standard-uncontrolled"
-            label="Username"
-            defaultValue="foo"
-            className={classes.textField}
-            margin="normal"
-            />
-
-            <TextField
-            id="standard-uncontrolled"
-            label="Website"
-            defaultValue="foo"
-            className={classes.textField}
-            margin="normal"
-            />
-
-            <TextField
-            id="standard-uncontrolled"
-            label="Bio"
-            defaultValue="foo"
-            className={classes.textField}
-            margin="normal"
-            />
-
-            <TextField
-            id="standard-uncontrolled"
-            label="Email"
-            defaultValue="foo"
-            className={classes.textField}
-            margin="normal"
-            />
-
-            <TextField
-            id="standard-uncontrolled"
-            label="Phone Number"
-            defaultValue="foo"
-            className={classes.textField}
-            margin="normal"
-            />
+          <PoseGroup>
+            <RouteContainer key={this.props.location.pathname}>
+              <Switch location={this.props.location}>
+                <Route
+                  path={`${this.props.match.url}/profile`}
+                  component={Profile}
+                />
+              </Switch>
+            </RouteContainer>
+          </PoseGroup>
         </Grid>
       </Grid>
     );
