@@ -54,11 +54,7 @@ class Header extends React.Component {
                     </Grid>
                         <Grid item>
                             <Hidden xsDown>
-<<<<<<< HEAD
-                                <Typography variant={'body'} className={classes.accent}>Sandip</Typography>
-=======
                                 <Typography variant={'body1'}>Sandip</Typography>
->>>>>>> 27a9693eb7352ee0892d1323aa18f56e011f106d
                                 <Typography variant={'caption'}>Software</Typography>
                             </Hidden>
                         </Grid>
