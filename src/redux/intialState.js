@@ -1,6 +1,7 @@
 export const initialState = {
   home: {
-    drawer: false
+    drawer: false,
+    rightDrawer: false
   },
   isFetching: false,
   data: {},

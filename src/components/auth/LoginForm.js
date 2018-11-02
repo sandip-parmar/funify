@@ -3,8 +3,7 @@ import { Grid, Button, TextField } from "@material-ui/core";
 import { Field, reduxForm } from "redux-form";
 import { withStyles } from "@material-ui/core/styles";
 import SocialLogin from "./SocialLogin";
-import Spotify from './Spotify';
-
+import { Link } from 'react-router-dom';
 const renderTextField = ({
   input,
   label,
@@ -24,6 +23,10 @@ const renderTextField = ({
 const styles = theme => ({
   loginForm: {
     "max-width": "25em"
+  },
+  anchor:{
+    'text-decoration': 'none',
+    'underline': 'none'
   }
 });
 class LoginForm extends React.Component {
@@ -64,23 +67,23 @@ class LoginForm extends React.Component {
                 />
               </Grid>
               <Grid item>
-                <Button
-                  type="submit"
-                  size={"large"}
-                  variant={"contained"}
-                  color={"primary"}
-                  fullWidth={true}
-                >
-                  {this.props.buttonTitle}
-                </Button>
+                <Link to="/home">
+                  <Button
+                    type="submit"
+                    size={"large"}
+                    variant={"contained"}
+                    color={"primary"}
+                    fullWidth={true}
+                    className={classes.anchor}
+                  >
+                    {this.props.buttonTitle}
+                  </Button>
+                </Link>
               </Grid>
 
               <Grid item>
                 <SocialLogin title={"Login"} />
-              </Grid>
-              <Grid item>
-                <Spotify />
-              </Grid>
+              </Grid>              
             </Grid>
           </form>
         </Grid>

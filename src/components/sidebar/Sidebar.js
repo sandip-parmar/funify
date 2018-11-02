@@ -80,7 +80,7 @@ class Sidebar extends React.Component {
                             <Item icon="settings" title="Settings" route="home/settings" />
                         </Box>
                         <Box className="box">
-                            <Item icon="power_settings_new" title="Logout" route="logout" />
+                            <Item icon="power_settings_new" title="Logout" route="login" />
                         </Box>
                     </List>
                 </Grid>

@@ -1,7 +1,8 @@
 import React from "react";
-import { Grid, Icon, Typography, Hidden, IconButton } from "@material-ui/core";
+import { Grid, Icon, Typography, Hidden, IconButton, Avatar } from "@material-ui/core";
 import { withStyles } from '@material-ui/core/styles';
 import posed from 'react-pose';
+import profileIcon from '../../resource/icons/profile_icon.png';
 
 const Input = posed.input({
   focusable: true,
@@ -26,13 +27,13 @@ const styles = {
       },
       'logoMd': {
         'font-size': '2.5em'
-      }
+      },
   }
 
 class Header extends React.Component {
 
     constructor(props){
-        super(props);        
+        super(props);
     }
 
     render() {
@@ -64,9 +65,10 @@ class Header extends React.Component {
                     direction={"row"}
                     alignItems={"center"}
                     justify={"center"}
+                    onClick={this.props.toggleRightDrawer}
                   >
                     <Grid item>
-                      <Icon>photo_camera</Icon>
+                      <Avatar alt={this.props.username} src={profileIcon} className={classes.avatar} />
                     </Grid>
                         <Grid item>
                             <Hidden xsDown>

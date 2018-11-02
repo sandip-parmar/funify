@@ -9,8 +9,9 @@ import { withStyles } from '@material-ui/core/styles';
 import Sidebar from "../../components/sidebar/Sidebar";
 import Header from "../../components/header/Header";
 import Settings from "../../templates/settings/Settings";
+import Post from "../post/Post";
 import { connect } from 'react-redux';
-import { toggleDrawer } from '../../redux/actions/home';
+import { toggleDrawer, toggleRightDrawer } from '../../redux/actions/home';
 
 const RouteContainer = posed.div({
   enter: {
@@ -76,7 +77,18 @@ class Home extends React.Component {
           >
             <Sidebar />
           </div>
-        </Drawer>
+        </Drawer>  
+        <Drawer anchor="right" open={this.props.rightDrawer} onClose={this.props.toggleRightDrawer}>
+          <div
+            tabIndex={0}
+            role="button"
+            onClick={this.props.toggleRightDrawer}
+            onKeyDown={this.props.toggleRightDrawer}
+            className={classes.drawer}
+          >
+            <Sidebar />
+          </div>
+        </Drawer>      
         <Hidden smDown>
           <Grid item md={3} lg={2} className={classes.sidebar}>
             <Sidebar />
@@ -91,13 +103,16 @@ class Home extends React.Component {
             className={classes.removeFlexWrap}
           >
             <Grid item className={classes.header}>
-              <Header toggleDrawer={this.props.toggleDrawer}/>
+              <Header 
+                toggleDrawer={this.props.toggleDrawer}
+                toggleRightDrawer={this.props.toggleRightDrawer} />
             </Grid>
             <Grid item className={classes.body}>
               <PoseGroup>
                 <RouteContainer key={this.props.location.pathname}>
                   <Switch location={this.props.location}>
                     <Route exact path={this.props.match.url + "/"} component={PostsGrid} key="home"/>
+                    <Route exact path={this.props.match.url +"/post"} component={Post} key="post"/>  
                     <Route path={this.props.match.url +"/settings"} component={Settings} key="settings"/>
                     <Route exact path={this.props.match.url +"/live"} render={ () => <div>live</div>} key="live"/>
                     <Route exact path={this.props.match.url +"/messages"} render={ () => <div>messages</div>} key="messages"/>
@@ -115,7 +130,8 @@ class Home extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    drawer: state.home.drawer
+    drawer: state.home.drawer,
+    rightDrawer: state.home.rightDrawer
   }
 }
 
@@ -123,6 +139,9 @@ const mapDispatchToProps = dispatch => {
   return {
     toggleDrawer: () => {
       dispatch(toggleDrawer())
+    },
+    toggleRightDrawer: () => {
+      dispatch(toggleRightDrawer())
     }
   }
 }
