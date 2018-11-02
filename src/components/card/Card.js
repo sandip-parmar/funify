@@ -1,6 +1,28 @@
 import React from "react";
-import { Grid, Icon, Typography } from "@material-ui/core";
+import { Grid, Icon, Typography, Avatar } from "@material-ui/core";
+import { Link } from 'react-router-dom';
 import { withStyles } from "@material-ui/core/styles";
+import posed from 'react-pose';
+import profileIcon from '../../resource/icons/profile_icon.png';
+import img from '../../resource/images/img1.jpg';
+
+
+const Box = posed.div({
+  hoverable: true, 
+  pressable: true,
+  init: {
+    scale: 1,
+    boxShadow: "0px 0px 50px 0px rgba(0,0,0,0.15)",
+  },
+  hover: {
+    scale: 1.02,
+    boxShadow: "0px 0px 50px 0px rgba(0,0,0,0.2)",
+  },
+  press: {
+    scale: 0.95,
+    boxShadow: '0px 0px 50px 0px rgba(0,0,0,0.2)'
+  }
+});
 
 const styles = {
   profile_pic: {
@@ -12,7 +34,7 @@ const styles = {
   card: {
     height: "15rem",
     "background-color": "#FFF",
-    "-webkit-box-shadow": "0px 0px 50px 0px rgba(0,0,0,0.15)",
+    "box-shadow": "0px 0px 50px 0px rgba(0,0,0,0.15)",
     width: "auto"
   },
   _card: {
@@ -21,11 +43,12 @@ const styles = {
   p05: {
     padding: "0.5em"
   },
-  accent: {
-    color: "#ED4E6B"
-  },
   icon: {
       color: '#9A9999'
+  },
+  img: {
+    width: 'auto',
+    height: '8em'
   }
 };
 
@@ -33,7 +56,7 @@ class Card extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className={classes.card}>
+      <Box className={classes.card}>
         <Grid
           container
           direction={"column"}
@@ -57,7 +80,7 @@ class Card extends React.Component {
                   justify={"flex-start"}
                 >
                   <Grid item>
-                    <div className={classes.profile_pic} />
+                  <Avatar alt={this.props.username} src={profileIcon} />
                   </Grid>
                   <Grid item>
                     <Typography className={classes.icon}>
@@ -67,14 +90,21 @@ class Card extends React.Component {
                 </Grid>
               </Grid>
               <Grid item>
-                <Icon className={classes.accent}>more_vert</Icon>
+                <Icon color={'primary'}>more_vert</Icon>
               </Grid>
             </Grid>
           </Grid>
           <Grid item>
-            <div>
-              <img />
-            </div>
+            <Grid
+              container              
+              direction={"row"}
+              alignItems={"center"}
+              justify={"center"}
+                >
+              <Link to={'home/post'}>
+                <img src={img} className={classes.img}/>
+              </Link>
+            </Grid>
           </Grid>
           <Grid item className={classes.p05}>
             <Grid
@@ -108,7 +138,7 @@ class Card extends React.Component {
             </Grid>
           </Grid>
         </Grid>
-      </div>
+      </Box>
     );
   }
 }

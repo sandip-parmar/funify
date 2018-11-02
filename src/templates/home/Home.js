@@ -1,16 +1,17 @@
 import React from "react";
 import {
-  Grid, Hidden, List, ListItem, Divider, Button, Icon,
-  Typography, FormControl, InputLabel, Input, InputAdornment, IconButton
+  Grid, Hidden, Drawer
 } from "@material-ui/core";
 import posed, { PoseGroup } from "react-pose";
-import styled from "styled-components";
 import { Switch, Route } from 'react-router'
 import PostsGrid from '../../components/posts-grid/PostsGrid';
 import { withStyles } from '@material-ui/core/styles';
 import Sidebar from "../../components/sidebar/Sidebar";
 import Header from "../../components/header/Header";
 import Settings from "../../templates/settings/Settings";
+import Post from "../post/Post";
+import { connect } from 'react-redux';
+import { toggleDrawer, toggleRightDrawer } from '../../redux/actions/home';
 
 const RouteContainer = posed.div({
   enter: {
@@ -44,10 +45,18 @@ const styles = {
     padding: '2em',
     height: '100vh',
     'overflow-y': 'auto'
+  },
+  drawer: {
+    width: '18em !important',
+    'overflow-x': 'hidden'
   }
 }
 
 class Home extends React.Component {
+
+  constructor(props){
+    super(props);
+  }
 
   render() {
     const { classes } = this.props;
@@ -58,6 +67,28 @@ class Home extends React.Component {
         alignItems={"flex-start"}
         className={classes.root}
       >
+        <Drawer open={this.props.drawer} onClose={this.props.toggleDrawer}>
+          <div
+            tabIndex={0}
+            role="button"
+            onClick={this.props.toggleDrawer}
+            onKeyDown={this.props.toggleDrawer}
+            className={classes.drawer}
+          >
+            <Sidebar />
+          </div>
+        </Drawer>  
+        <Drawer anchor="right" open={this.props.rightDrawer} onClose={this.props.toggleRightDrawer}>
+          <div
+            tabIndex={0}
+            role="button"
+            onClick={this.props.toggleRightDrawer}
+            onKeyDown={this.props.toggleRightDrawer}
+            className={classes.drawer}
+          >
+            <Sidebar />
+          </div>
+        </Drawer>      
         <Hidden smDown>
           <Grid item md={3} lg={2} className={classes.sidebar}>
             <Sidebar />
@@ -72,13 +103,16 @@ class Home extends React.Component {
             className={classes.removeFlexWrap}
           >
             <Grid item className={classes.header}>
-              <Header />
+              <Header 
+                toggleDrawer={this.props.toggleDrawer}
+                toggleRightDrawer={this.props.toggleRightDrawer} />
             </Grid>
             <Grid item className={classes.body}>
               <PoseGroup>
                 <RouteContainer key={this.props.location.pathname}>
                   <Switch location={this.props.location}>
                     <Route exact path={this.props.match.url + "/"} component={PostsGrid} key="home"/>
+                    <Route exact path={this.props.match.url +"/post"} component={Post} key="post"/>  
                     <Route path={this.props.match.url +"/settings"} component={Settings} key="settings"/>
                     <Route exact path={this.props.match.url +"/live"} render={ () => <div>live</div>} key="live"/>
                     <Route exact path={this.props.match.url +"/messages"} render={ () => <div>messages</div>} key="messages"/>
@@ -94,4 +128,21 @@ class Home extends React.Component {
   }
 }
 
-export default withStyles(styles)(Home);
+const mapStateToProps = state => {
+  return {
+    drawer: state.home.drawer,
+    rightDrawer: state.home.rightDrawer
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    toggleDrawer: () => {
+      dispatch(toggleDrawer())
+    },
+    toggleRightDrawer: () => {
+      dispatch(toggleRightDrawer())
+    }
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Home));

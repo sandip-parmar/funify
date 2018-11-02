@@ -14,6 +14,14 @@ const store = createStore(myStore, applyMiddleware(thunk));
 const theme = createMuiTheme({
     typography: {
         useNextVariants: true
+    },
+    palette:{
+        primary: {
+            main: '#ED4E6B'
+        },
+        secondary:{
+            main: '#ED4E6B'
+        }
     }
 });
 

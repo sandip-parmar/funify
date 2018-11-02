@@ -1,18 +1,8 @@
 import React from "react";
 import {
   Grid,
-  Hidden,
   List,
   ListItem,
-  TextField,
-  Button,
-  Icon,
-  Typography,
-  FormControl,
-  InputLabel,
-  Input,
-  InputAdornment,
-  IconButton
 } from "@material-ui/core";
 import { Link, Route, Switch } from "react-router-dom";
 import posed, { PoseGroup } from "react-pose";

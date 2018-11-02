@@ -35,7 +35,6 @@ const styles = {
 class Item extends React.Component {
     constructor(props) {
         super(props);
-        console.log(props)
     }
 
     render() {
@@ -43,7 +42,7 @@ class Item extends React.Component {
         const { classes } = this.props;
 
         return (
-            <Link to={`${this.props.route}`}>
+            <Link to={`/${this.props.route}`}>
             <ListItem>
                 <Grid
                     container
