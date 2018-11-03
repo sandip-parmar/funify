@@ -47,9 +47,7 @@ const mapDispatchToActions = dispatch => {
   return {};
 };
 
-const Login1 = withStyles(styles)(Login);
-
 export default connect(
   mapStateToProps,
   mapDispatchToActions
-)(Login1);
+)(withStyles(styles)(Login));

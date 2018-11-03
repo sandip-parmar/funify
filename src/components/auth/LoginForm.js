@@ -26,7 +26,7 @@ const styles = theme => ({
   },
   anchor:{
     'text-decoration': 'none',
-    'underline': 'none'
+    'under-line': 'none'
   }
 });
 class LoginForm extends React.Component {

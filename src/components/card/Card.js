@@ -32,7 +32,7 @@ const styles = {
     "background-color": "#ED4E6B"
   },
   card: {
-    height: "15rem",
+    height: "auto",
     "background-color": "#FFF",
     "box-shadow": "0px 0px 50px 0px rgba(0,0,0,0.15)",
     width: "auto"
@@ -47,8 +47,9 @@ const styles = {
       color: '#9A9999'
   },
   img: {
-    width: 'auto',
-    height: '8em'
+    'max-width': '100%',
+    height: 'auto',
+    'object-fit': 'contain'
   }
 };
 

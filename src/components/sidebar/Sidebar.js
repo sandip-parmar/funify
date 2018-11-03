@@ -65,7 +65,7 @@ class Sidebar extends React.Component {
                     </Grid>
                     <List>
                         <Box className="box">
-                            <Item icon="home" title="Home" route="/home" />
+                            <Item icon="home" title="Home" route="home" />
                         </Box>
                         <Box className="box">
                             <Item icon="switch_video" title="Live" route="home/live" />

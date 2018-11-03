@@ -11,6 +11,7 @@ import Header from "../../components/header/Header";
 import Settings from "../../templates/settings/Settings";
 import Post from "../post/Post";
 import { connect } from 'react-redux';
+import Profile from '../../components/sidebar/Profile';
 import { toggleDrawer, toggleRightDrawer } from '../../redux/actions/home';
 
 const RouteContainer = posed.div({
@@ -48,7 +49,8 @@ const styles = {
   },
   drawer: {
     width: '18em !important',
-    'overflow-x': 'hidden'
+    'overflow-x': 'hidden',
+    height: '100%'
   }
 }
 
@@ -86,7 +88,7 @@ class Home extends React.Component {
             onKeyDown={this.props.toggleRightDrawer}
             className={classes.drawer}
           >
-            <Sidebar />
+            <Profile name='Sandip Parmar' status="rock the world"/>
           </div>
         </Drawer>      
         <Hidden smDown>
