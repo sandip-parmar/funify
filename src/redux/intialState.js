@@ -4,7 +4,65 @@ export const initialState = {
     rightDrawer: false
   },
   isFetching: false,
-  data: {},
+  data: {
+    shareModalState: false,
+    homeGrid: [
+      {
+        key: 1,
+        id: 15265,
+        user_id: 5623,
+        profile_pic_path: '',
+        name: 'Sandip',
+        image_path: '',
+        like: true, 
+        comments: [
+          {
+            username: 'Hiren',
+            body: 'Looks really awesome',
+            timestamp: ''
+          }
+        ],
+        menuOption: false,
+        turned: false
+      },
+      {
+        key: 1,
+        id: 88546,
+        user_id: 5623,
+        profile_pic_path: '',
+        name: 'Sandip',
+        image_path: '',
+        like: true, 
+        comments: [
+          {
+            username: 'Hiren',
+            body: 'Looks really awesome',
+            timestamp: ''
+          }
+        ],
+        menuOption: false,
+        turned: false
+      },
+      {
+        key: 1,
+        id: 152655,
+        user_id: 5623,
+        profile_pic_path: '',
+        name: 'Sandip',
+        image_path: '',
+        like: true, 
+        comments: [
+          {
+            username: 'Hiren',
+            body: 'Looks really awesome',
+            timestamp: ''
+          }
+        ],
+        menuOption: false,
+        turned: false
+      }
+    ]
+  },
   auth:{
     isAuthenticated: false,
     authToken: '',

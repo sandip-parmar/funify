@@ -114,7 +114,7 @@ class Home extends React.Component {
                 <RouteContainer key={this.props.location.pathname}>
                   <Switch location={this.props.location}>
                     <Route exact path={this.props.match.url + "/"} component={PostsGrid} key="home"/>
-                    <Route exact path={this.props.match.url +"/post"} component={Post} key="post"/>  
+                    <Route path={this.props.match.url +`/post/`} component={Post} key="post"/>  
                     <Route path={this.props.match.url +"/settings"} component={Settings} key="settings"/>
                     <Route exact path={this.props.match.url +"/live"} render={ () => <div>live</div>} key="live"/>
                     <Route exact path={this.props.match.url +"/messages"} render={ () => <div>messages</div>} key="messages"/>
