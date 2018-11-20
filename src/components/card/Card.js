@@ -3,8 +3,8 @@ import { Grid, Icon, Typography, Avatar, Modal,Button,List,ListItem,ListItemText
 import { Link } from 'react-router-dom';
 import { withStyles } from "@material-ui/core/styles";
 import posed from 'react-pose';
+import Stats from '../stats/States';
 import profileIcon from '../../resource/icons/profile_icon.png';
-import img from '../../resource/images/img1.jpg';
 
 const Box = posed.div({
   hoverable: true, 
@@ -55,31 +55,11 @@ const styles = theme => ({
   },
 });
 
-// icon when like is true
-function Marked(props){
-  return (
-    <Icon color={'primary'} onClick={props.toggle}>
-      {props.icon}
-    </Icon>
-  )
-};
-// icon when like is false
-function UnMarked(props){
-  return (
-    <Icon className={props.class} onClick={props.toggle}>
-      {props.icon}
-    </Icon>
-  )
-}
-
 class Card extends React.Component {
   constructor(props){
     super(props);
-    console.log(props)
     this.handleMenuClick = this.handleMenuClick.bind(this);
     this.handleMenuItemClick = this.handleMenuItemClick.bind(this);
-    this.toggleLike = this.toggleLike.bind(this);
-    this.toggleTurned = this.toggleTurned.bind(this);
   }
 
   handleMenuClick(){
@@ -88,13 +68,6 @@ class Card extends React.Component {
 
   handleMenuItemClick() {
     console.log('menu item clicked')
-  }
-
-  toggleLike(){
-    this.props.toggle(this.props.post.id, 'like');
-  }
-  toggleTurned(){
-    this.props.toggle(this.props.post.id, 'turned');
   }
 
   render() {
@@ -145,82 +118,12 @@ class Card extends React.Component {
               justify={"center"}
                 >
               <Link to={`home/post/${this.props.post.id}`}>
-                <img src={img} className={classes.img}/>
+                <img src={'/static/images/img1.jpg'} className={classes.img}/>
               </Link>
             </Grid>
           </Grid>
           <Grid item className={classes.p05}>
-            <Grid
-              container
-              direction={"row"}
-              alignItems={"center"}
-              justify={"space-between"}
-            >
-              <Grid item>
-                <Grid
-                  container
-                  spacing={8}
-                  direction={"row"}
-                  alignItems={"center"}
-                  justify={"flex-start"}
-                >
-                  <Grid item> 
-    {this.props.post.like ? <Marked icon={'favorite'} toggle={this.toggleLike}/> : <UnMarked class={classes.icon} icon={'favorite_border'} toggle={this.toggleLike}/> }                                      
-                  </Grid>
-                  <Grid item>
-                    <Icon className={classes.icon}>chat_bubble_outline</Icon>
-                  </Grid>
-                  <Grid item>
-                    <Icon className={classes.icon} onClick={this.props.toggleModal}>near_me</Icon>
-                    <Modal
-                      open={this.props.shareModalState}
-                      onClose={this.props.toggleModal}>
-
-                      <Grid
-                        container
-                        direction={"row"}
-                        alignItems={"center"}
-                        justify={"center"}
-                        className={classes.paper}
-                      >
-                        <Grid item xs={12} sm={8} md={4}>
-                        <List>
-                            <ListItem dense>  
-                              <ListItemText primary={<Button onClick={this.props.toggleModal}>Share to Facebook</Button>}>                                
-                              </ListItemText>                            
-                            </ListItem>                       
-                            <ListItem>                              
-                              <Button onClick={this.props.toggleModal}>Share to Facebook</Button>
-                            </ListItem>                       
-                            <ListItem>                              
-                              <Button onClick={this.props.toggleModal}>Share to Facebook</Button>
-                            </ListItem>                       
-                            <ListItem>                              
-                              <Button onClick={this.props.toggleModal}>Share to Facebook</Button>
-                            </ListItem>                       
-                            <ListItem>                              
-                              <Button onClick={this.props.toggleModal}>Share to Facebook</Button>
-                            </ListItem> 
-                            <ListItem>                              
-                              <Button onClick={this.props.toggleModal}>Report</Button>
-                            </ListItem> 
-                            <ListItem>                              
-                              <Button onClick={this.props.toggleModal}>Mute</Button>
-                            </ListItem>
-                            <ListItem>                              
-                              <Button onClick={this.props.toggleModal}>Cancel</Button>
-                            </ListItem>                       
-                        </List>
-                        </Grid>
-                      </Grid>                        
-                    </Modal>
-                  </Grid>
-                </Grid>
-              </Grid>
-              <Grid item>
-              {this.props.post.turned ? <Marked icon={'turned_in'} toggle={this.toggleTurned}/> : <UnMarked class={classes.icon} icon={'turned_in_not'} toggle={this.toggleTurned}/> }
-              </Grid>
-            </Grid>
+            <Stats post={this.props.post} toggle={this.props.toggle}/>
           </Grid>
         </Grid>
       </Box>

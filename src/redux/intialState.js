@@ -61,7 +61,12 @@ export const initialState = {
         menuOption: false,
         turned: false
       }
-    ]
+    ],
+    post:{
+      loading: true,
+      data: {},
+      error: {}
+    }
   },
   auth:{
     isAuthenticated: false,

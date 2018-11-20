@@ -1,12 +1,11 @@
 import {
     TOGGLE_POST_FIELDS,
-    TOGGLE_SHARE_MODAL
+    TOGGLE_SHARE_MODAL,
 } from '../actions/data';
 import { initialState } from '../intialState';
 
 function toggle(homeGrid, id, field){
-    console.log(id)
-    console.log(field)
+
     let newGrid = homeGrid.slice();
 
     for( let p of newGrid){
@@ -17,7 +16,6 @@ function toggle(homeGrid, id, field){
     }
     return newGrid;
 }
-
 
 const data = (state = initialState.data, action) => {
 
@@ -31,7 +29,7 @@ const data = (state = initialState.data, action) => {
             return Object.assign({}, state, {
                 shareModalState: !state.shareModalState
             });;
-        }
+        }    
         default: 
             return state;
     }

@@ -37,7 +37,7 @@ function Stats(props) {
 function ProfilePic(props) {
     return (
         <div className={props.classes.profile_pic}>
-            <img src=""></img>
+            <img src="/static/images/profile_icon.png"></img>
         </div>
     );
 }
