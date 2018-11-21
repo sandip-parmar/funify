@@ -3,10 +3,6 @@ import { Grid, TextField } from '@material-ui/core';
 
 class Profile extends React.Component{
 
-    constructor(props){
-        super(props);
-    }
-
     render(){
         return(
             <Grid 
